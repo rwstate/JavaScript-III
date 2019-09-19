@@ -146,3 +146,74 @@ Humanoid.prototype.greet = function () {
   // * Create Villain and Hero constructor functions that inherit from the Humanoid constructor function.  
   // * Give the Hero and Villains different methods that could be used to remove health points from objects which could result in destruction if health gets to 0 or drops below 0;
   // * Create two new objects, one a villain and one a hero and fight it out with methods!
+
+  function Villain (evilStats) {
+    Humanoid.call(this, evilStats);
+  }
+
+  Villain.prototype = Object.create(Humanoid.prototype);
+
+  Villain.prototype.slash = function (target) {
+    target.healthPoints -= 5;
+    if (target.healthPoints <= 0) {
+      console.log(`${target.name} receives 5 points of damage!`)
+      console.log(target.destroy())
+    
+    } else {console.log(`${target.name} receives 5 points of damage!`)};
+  }
+
+  function Hero (holyStats) {
+    Humanoid.call(this, holyStats);
+  }
+
+  Hero.prototype = Object.create(Humanoid.prototype);
+
+  Hero.prototype.bash = function (target) {
+    target.healthPoints -= 5;
+    if (target.healthPoints <= 0) {
+      console.log(`${target.name} receives 5 points of damage!`)
+      console.log(target.destroy())
+    
+    } else {console.log(`${target.name} receives 5 points of damage!`)};
+  }
+
+  const hero = new Hero({
+    createdAt: new Date(),
+    dimensions: {
+      length: 2,
+      width: 2,
+      height: 2,
+    },
+    healthPoints: 15,
+    name: 'Sir Mustachio',
+    team: 'The Round Table',
+    weapons: [
+      'Giant Sword',
+      'Shield',
+    ],
+    language: 'Common Tongue',
+  });
+
+  const villain = new Villain({
+    createdAt: new Date(),
+    dimensions: {
+      length: 2,
+      width: 1,
+      height: 1,
+    },
+    healthPoints: 5,
+    name: 'Bruce',
+    team: 'Mage Guild',
+    weapons: [
+      'Staff of Shamalama',
+    ],
+    language: 'Common Tongue',
+  });
+
+villain.slash(hero);
+villain.slash(hero);
+villain.slash(hero);
+
+
+
+  

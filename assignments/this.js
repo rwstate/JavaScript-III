@@ -4,7 +4,7 @@
 * 1. Window Binding: When this is used in the global scope, the value of this is the Window object
 * 2. Implicit Binding: When a method is called, the value of this is the owner of the method
 * 3. New Binding: When an object is created from a constructor, the new object is the value of this
-* 4. Explicit Binding: this is whatever is passed to call or apply
+* 4. Explicit Binding: this is whatever is passed to call, apply, or bind
 *
 * write out a code example of each explanation above
 */
@@ -12,6 +12,14 @@
 // Principle 1
 
 this
+
+window.age = 27
+
+function sayAge () {
+  console.log(`My age is ${this.age}`)
+}
+
+sayAge()
 
 // Principle 2
 
